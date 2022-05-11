@@ -74,19 +74,19 @@
         },
         {
             "id": 2,
-            "name": "name",
+            "name": "Cool cat",
             "img": "https://krasivosti.pro/uploads/posts/2021-04/thumbs/1617683586_3-p-koshachi-oboi-kot-na-avu-3.jpg",
             "balance": 1500
         },
         {
             "id": 3,
-            "name": "name",
+            "name": "Trendy cat",
             "img": "https://shutnikov.club/wp-content/uploads/2020/04/smeshnye_avatarki_dlya_muzhchin_10_05112027-1024x576.jpg",
             "balance": 1500
         },
         {
             "id": 4,
-            "name": "name",
+            "name": "Cat catskiy",
             "img": "https://shutnikov.club/wp-content/uploads/2020/04/smeshnye_avatarki_4_06111025-752x1024.jpg",
             "balance": 1500
         }
