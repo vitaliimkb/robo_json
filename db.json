@@ -70,25 +70,25 @@
             "id": 1,
             "name": "Enot raketa",
             "img": "https://i.ytimg.com/vi/UPZeAwCLxxs/maxresdefault.jpg",
-            "balance": 1500
+            "balance": 500
         },
         {
             "id": 2,
             "name": "Cool cat",
             "img": "https://krasivosti.pro/uploads/posts/2021-04/thumbs/1617683586_3-p-koshachi-oboi-kot-na-avu-3.jpg",
-            "balance": 1500
+            "balance": 25500
         },
         {
             "id": 3,
             "name": "Trendy cat",
             "img": "https://shutnikov.club/wp-content/uploads/2020/04/smeshnye_avatarki_dlya_muzhchin_10_05112027-1024x576.jpg",
-            "balance": 1500
+            "balance": 1200
         },
         {
             "id": 4,
             "name": "Cat catskiy",
             "img": "https://shutnikov.club/wp-content/uploads/2020/04/smeshnye_avatarki_4_06111025-752x1024.jpg",
-            "balance": 1500
+            "balance": 7000
         }
     ]
 }
