@@ -1,9 +1,15 @@
 let productsGrid = document.getElementById("products-grid");
 let products = [];
 let xhr = new XMLHttpRequest();
-let url = "https://my-json-server.typicode.com/vitaliimkb/robo_json";
+//let url = "https://my-json-server.typicode.com/vitaliimkb/robo_json";
+let url = "https://market-275f.restdb.io/rest/product"
 
-xhr.open("GET", url + "/products");
+xhr.open("GET", url);
+
+xhr.setRequestHeader("content-type", "application/json");
+xhr.setRequestHeader("x-apikey", "6285380de8128861fcf3d417");
+xhr.setRequestHeader("cache-control", "no-cache");
+
 xhr.responseType = 'json';
 xhr.onload = function() {
     products = xhr.response;
@@ -17,7 +23,7 @@ xhr.onload = function() {
             <p class='product-desc'><b>Description: </b>${p.description}</p>
             <p class='product-price'><b>Price: </b>${p.price}UAH</p>
             <a href='user.html?id=${p.author_id}'>Seller profile</a>
-            <button onclick='addProductToCart(${p.id})'>Buy</button>
+            <button onclick='addProductToCart(${p._id})'>Buy</button>
         `;
         productsGrid.append(productElement);
     })
@@ -26,7 +32,7 @@ xhr.send();
 
 function addProductToCart(id)  {
     let product = products.find(function(p) {
-        return p.id == id;
+        return p._id == id;
     })
     cart.push(product)
     drawCartProducts()
