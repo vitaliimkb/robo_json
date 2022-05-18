@@ -17,3 +17,22 @@ userRequest.onload = function() {
     `;
 }
 userRequest.send()
+
+let productRequest = new XMLHttpRequest()
+productRequest.open('GET', `${url}/products?author_id=${id}`)
+productRequest.responseType = 'json'
+productRequest.onload = function() {
+    let products = productRequest.response
+    productsGrid.innerHTML = null
+    products.forEach(p => {
+        productsGrid.innerHTML += `
+            <div class="product">
+                <h2 class="product-name">${p.name}</h2>
+                <img class="product-img" src="${p.photo_url}" alt="${p.name}">
+                <p class='product-desc'><b>Description: </b>${p.description}</p>
+                <p class='product-price'><b>Price: </b>${p.price}UAH</p>
+            </div>
+        `
+    })
+}
+productRequest.send()
