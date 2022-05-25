@@ -3,6 +3,7 @@ let products = [];
 let xhr = new XMLHttpRequest();
 //let url = "https://my-json-server.typicode.com/vitaliimkb/robo_json";
 let url = "https://market-275f.restdb.io/rest/product"
+//let url = "http://127.0.0.1:5000/products"
 
 xhr.open("GET", url);
 
@@ -13,6 +14,7 @@ xhr.setRequestHeader("cache-control", "no-cache");
 xhr.responseType = 'json';
 xhr.onload = function() {
     products = xhr.response;
+    console.log(products);
     productsGrid.innerHTML = null;
     products.forEach(p => {
         let productElement = document.createElement("div");
@@ -66,14 +68,31 @@ function drawCartProducts() {
     })
     cartProd.innerHTML += `
         <p><b>Total price: ${sum}UAH</b></p>
-        <button onclick='buyAll()'>Buy all</button>
+        <button onclick="buyAll()" type="button" data-bs-toggle="modal" 
+            data-bs-target="#exampleModal">Buy all</button>
     `;
 }
 
+let orderBlock = document.getElementById("order-block")
+
 function buyAll() {
-    cart = [];
-    cartProd.innerHTML = "Money was withdraw your credit card";
-    localStorage.setItem("cart", []);
+    let sum = 0
+    orderBlock.innerHTML = null
+    cart.forEach(function(p) {
+        orderBlock.innerHTML += `
+        <div class="col-sm-6" style="width: 18rem;">
+            <div class="card">
+                <img src="${p.photo_url}" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-text">${p.name} | ${p.price}</p>
+                </div>
+            </div>
+        </div>
+        `
+        sum += +p.price
+    })
+    
+    document.getElementById("total-price").innerHTML = "Total price: " + sum + "UAH"
 }
 
 function openCart() {

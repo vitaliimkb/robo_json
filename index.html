@@ -6,12 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <h1>Robocode marketplace</h1>
         <div id="cart">
+            <h3><a href="admin.html">To admin panel</a></h3>
             <button id="cart-button" onclick="openCart()">
                 <img src="img/cart.png" alt="cart">
             </button>
@@ -23,9 +28,56 @@
 
     <main>
         <div id="products-grid">
-            
+
         </div>
     </main>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Your order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="order-block" class="row"></div>
+                    <br><br>
+                    <form id="order-form">
+                        <div class="mb-3">
+                            <input type="text" name="name" class="form-control form-control" placeholder="Full name"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" name="address" class="form-control form-control"
+                                placeholder="Delivery address" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" name="phone" class="form-control form-control"
+                                  placeholder="Phone number" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" name="post_number" 
+                                class="form-control form-control"
+                                  placeholder="Post office number" required>
+                        </div>
+                        <div class="mb-3">
+                            <h3 id="total-price"></h3>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-success">
+                                Buy all
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 
