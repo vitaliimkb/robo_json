@@ -1,11 +1,10 @@
 let productsGrid = document.getElementById("products-grid");
 let products = [];
 let xhr = new XMLHttpRequest();
-//let url = "https://my-json-server.typicode.com/vitaliimkb/robo_json";
-let url = "https://market-275f.restdb.io/rest/product"
-//let url = "http://127.0.0.1:5000/products"
+let url = "https://market-275f.restdb.io/rest/"
 
-xhr.open("GET", url);
+
+xhr.open("GET", url + "product");
 
 xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("x-apikey", "6285380de8128861fcf3d417");
@@ -14,7 +13,6 @@ xhr.setRequestHeader("cache-control", "no-cache");
 xhr.responseType = 'json';
 xhr.onload = function() {
     products = xhr.response;
-    console.log(products);
     productsGrid.innerHTML = null;
     products.forEach(p => {
         let productElement = document.createElement("div");
@@ -24,8 +22,7 @@ xhr.onload = function() {
             <img class='product-img' src='${p.photo_url}' alt='${p.name}'>
             <p class='product-desc'><b>Description: </b>${p.description}</p>
             <p class='product-price'><b>Price: </b>${p.price}UAH</p>
-            <a href='user.html?id=${p.author_id}'>Seller profile</a>
-            <button onclick='addProductToCart(${p._id})'>Buy</button>
+            <button onclick="addProductToCart('${p._id}')">Buy</button>
         `;
         productsGrid.append(productElement);
     })
@@ -36,6 +33,7 @@ function addProductToCart(id)  {
     let product = products.find(function(p) {
         return p._id == id;
     })
+
     cart.push(product)
     drawCartProducts()
     localStorage.setItem("cart", JSON.stringify(cart))
@@ -43,7 +41,6 @@ function addProductToCart(id)  {
     setTimeout(function() {
         document.getElementById("cart-button").classList.remove('active');
     }, 500)
-    console.log(cart);
 }
 
 let cartProd = document.getElementById("cart-products");
@@ -98,3 +95,22 @@ function buyAll() {
 function openCart() {
     cartProd.classList.toggle("hide");
 }
+
+document.getElementById("order-form").addEventListener("submit", function(e) {
+    e.preventDefault()
+    let data = JSON.stringify({
+        "name": e.target['name'].value,
+        "address": e.target['address'].value,
+        "phone": e.target['phone'].value,
+        "post_number": e.target['post_number'].value,
+        "status": "New",
+        "products": localStorage.getItem("cart")
+    })
+
+    let request = new XMLHttpRequest()
+    request.open("POST", url + "order")
+    request.setRequestHeader("content-type", "application/json");
+    request.setRequestHeader("x-apikey", "6285380de8128861fcf3d417");
+    request.setRequestHeader("cache-control", "no-cache");
+    request.send(data)
+})

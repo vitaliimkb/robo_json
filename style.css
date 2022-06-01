@@ -79,8 +79,8 @@ button {
 
 #cart-products {
     position: absolute;
-    top: 40px;
-    right: 40px;
+    top: 85px;
+    right: 160px;
     padding: 10px;
     text-align: left;
     border: 1px solid black;
@@ -102,51 +102,11 @@ button {
     padding: 10px;
 }
 
-.profile-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px
-}
-
-#profile {
-    padding: 10px 30px;
-    text-align: center;
-}
-
-.profile-img {
-    width: 400px;
-    margin: 40px;
-    border-radius: 20%;
-}
-
-#profile p {
-    font-size: 30px;
-}
-
 span {
     color: black !important; 
     font-family: Arial, Helvetica, sans-serif !important; 
     font-size: 18px !important; 
     white-space: normal !important;
-}
-
-.products-link {
-    font-size: 40px;
-    color: black;
-    text-decoration: none;
-    transition: 0.5s;
-}
-
-.products-link:hover {
-    transform: scale(1.2);
-}
-
-#user-products-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
 }
 
 @media screen and (max-width: 1000px) {
